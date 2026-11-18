@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <defs>
+    <radialGradient id="pt-bg" cx="55%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#1A120C"/>
+      <stop offset="55%" stop-color="#0B0B0D"/>
+      <stop offset="100%" stop-color="#070708"/>
+    </radialGradient>
+    <radialGradient id="pt-crimson" cx="72%" cy="32%" r="42%">
+      <stop offset="0%" stop-color="#E02035" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pt-gold-glow" cx="30%" cy="66%" r="45%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pt-route" x1="140" y1="410" x2="820" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#F2D68A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="pt-congestion" x1="390" y1="220" x2="660" y2="310" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A30F20"/>
+      <stop offset="50%" stop-color="#E02035"/>
+      <stop offset="100%" stop-color="#A30F20"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#pt-bg)"/>
+  <rect width="960" height="540" fill="url(#pt-crimson)"/>
+  <rect width="960" height="540" fill="url(#pt-gold-glow)"/>
+
+  <!-- Isometric topographic map grid -->
+  <g stroke="#D4AF37" stroke-opacity="0.09" stroke-width="1">
+    <path d="M80 420 L480 220 L880 420"/>
+    <path d="M130 370 L480 195 L830 370"/>
+    <path d="M180 320 L480 170 L780 320"/>
+    <path d="M230 270 L480 145 L730 270"/>
+    <path d="M280 220 L480 120 L680 220"/>
+    <path d="M180 140 L580 340"/>
+    <path d="M280 110 L680 310"/>
+    <path d="M380 80 L780 280"/>
+    <path d="M100 220 L500 420"/>
+    <path d="M780 140 L380 340"/>
+    <path d="M680 110 L280 310"/>
+    <path d="M580 80 L180 280"/>
+  </g>
+
+  <!-- Secondary dark road arteries -->
+  <g stroke="#FFFFFF" stroke-opacity="0.09" stroke-width="2" stroke-linecap="round">
+    <path d="M110 390 L260 320 L380 350 L540 280 L720 320 L860 245"/>
+    <path d="M170 215 L330 265 L490 215 L630 250 L820 175"/>
+    <path d="M250 450 L430 375 L590 410 L790 330"/>
+  </g>
+
+  <!-- Congested red route avoided by AI -->
+  <path d="M350 325 C430 285, 510 295, 615 245" stroke="url(#pt-congestion)" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"/>
+  <circle cx="512" cy="276" r="38" fill="#E02035" fill-opacity="0.12" stroke="#E02035" stroke-opacity="0.55" stroke-width="1.5"/>
+  <circle cx="512" cy="276" r="14" fill="#E02035" fill-opacity="0.3"/>
+  <circle cx="512" cy="276" r="5" fill="#FF6B7B"/>
+
+  <!-- Optimal Metallic Gold AI Delivery Route -->
+  <path d="M150 405 C225 365, 255 245, 365 215 C470 185, 550 130, 650 150 C725 165, 760 190, 818 155"
+        stroke="#D4AF37" stroke-opacity="0.22" stroke-width="14" stroke-linecap="round"/>
+  <path d="M150 405 C225 365, 255 245, 365 215 C470 185, 550 130, 650 150 C725 165, 760 190, 818 155"
+        stroke="url(#pt-route)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Waypoints & Dispatch Nodes -->
+  <g>
+    <!-- Origin node -->
+    <circle cx="150" cy="405" r="22" fill="#D4AF37" fill-opacity="0.16" stroke="#F2D68A" stroke-width="1.5"/>
+    <circle cx="150" cy="405" r="7" fill="#F2D68A"/>
+
+    <!-- Mid AI optimization node -->
+    <polygon points="365,193 384,204 384,226 365,237 346,226 346,204" fill="#121214" stroke="#F2D68A" stroke-width="2"/>
+    <circle cx="365" cy="215" r="5" fill="#F2D68A"/>
+
+    <!-- Mid relay node -->
+    <polygon points="650,130 667,140 667,160 650,170 633,160 633,140" fill="#121214" stroke="#D4AF37" stroke-width="2"/>
+    <circle cx="650" cy="150" r="4.5" fill="#D4AF37"/>
+
+    <!-- Destination pin -->
+    <circle cx="818" cy="155" r="26" fill="#D4AF37" fill-opacity="0.14" stroke="#F2D68A" stroke-opacity="0.7" stroke-width="1.5"/>
+    <path d="M818 135 V175 M798 155 H838" stroke="#F2D68A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="818" cy="155" r="5" fill="#080808" stroke="#F2D68A" stroke-width="2"/>
+  </g>
+
+  <!-- Floating glass telemetry frames (abstract, zero text) -->
+  <rect x="64" y="54" width="160" height="72" rx="12" fill="#111113" fill-opacity="0.82" stroke="#D4AF37" stroke-opacity="0.35"/>
+  <rect x="84" y="74" width="62" height="7" rx="3.5" fill="#F2D68A" fill-opacity="0.75"/>
+  <rect x="84" y="92" width="118" height="6" rx="3" fill="#FFFFFF" fill-opacity="0.15"/>
+  <rect x="84" y="106" width="84" height="6" rx="3" fill="#E02035" fill-opacity="0.65"/>
+
+  <rect x="720" y="400" width="176" height="84" rx="12" fill="#111113" fill-opacity="0.82" stroke="#D4AF37" stroke-opacity="0.3"/>
+  <path d="M742 456 L770 438 L798 446 L832 418 L874 426" stroke="#F2D68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="832" cy="418" r="4" fill="#F2D68A"/>
+  <circle cx="874" cy="426" r="4" fill="#E02035"/>
+</svg>

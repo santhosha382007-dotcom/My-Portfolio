@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <defs>
+    <radialGradient id="sa-bg" cx="50%" cy="40%" r="68%">
+      <stop offset="0%" stop-color="#1A150E"/>
+      <stop offset="55%" stop-color="#0B0B0D"/>
+      <stop offset="100%" stop-color="#070708"/>
+    </radialGradient>
+    <radialGradient id="sa-crimson" cx="80%" cy="76%" r="42%">
+      <stop offset="0%" stop-color="#A30F20" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sa-gold" x1="150" y1="90" x2="810" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F2D68A"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8A691B"/>
+    </linearGradient>
+    <linearGradient id="sa-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#19191D" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0E0E11" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#sa-bg)"/>
+  <rect width="960" height="540" fill="url(#sa-crimson)"/>
+
+  <!-- Main frosted glass academy workspace frame -->
+  <rect x="130" y="72" width="700" height="396" rx="22" fill="url(#sa-card)" stroke="url(#sa-gold)" stroke-opacity="0.55" stroke-width="1.8"/>
+
+  <!-- Top window bar -->
+  <line x1="130" y1="122" x2="830" y2="122" stroke="#D4AF37" stroke-opacity="0.18"/>
+  <circle cx="164" cy="97" r="5" fill="#E02035"/>
+  <circle cx="184" cy="97" r="5" fill="#D4AF37"/>
+  <circle cx="204" cy="97" r="5" fill="#FFFFFF" fill-opacity="0.22"/>
+  <rect x="340" y="90" width="280" height="14" rx="7" fill="#FFFFFF" fill-opacity="0.06" stroke="#D4AF37" stroke-opacity="0.18"/>
+
+  <!-- Sidebar panel -->
+  <rect x="156" y="146" width="146" height="296" rx="14" fill="#101013" stroke="#FFFFFF" stroke-opacity="0.07"/>
+  <rect x="176" y="172" width="106" height="14" rx="7" fill="url(#sa-gold)" fill-opacity="0.85"/>
+  <rect x="176" y="206" width="84" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.16"/>
+  <rect x="176" y="234" width="96" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.12"/>
+  <rect x="176" y="262" width="76" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.12"/>
+  <rect x="176" y="290" width="90" height="10" rx="5" fill="#E02035" fill-opacity="0.55"/>
+  <rect x="176" y="384" width="106" height="34" rx="9" fill="#A30F20" fill-opacity="0.32" stroke="#E02035" stroke-opacity="0.5"/>
+
+  <!-- Top metric geometry cards -->
+  <rect x="324" y="146" width="150" height="104" rx="14" fill="#131317" stroke="#D4AF37" stroke-opacity="0.32"/>
+  <circle cx="364" cy="198" r="24" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="5"/>
+  <path d="M364 174 A24 24 0 1 1 343 210" stroke="#F2D68A" stroke-width="5" stroke-linecap="round"/>
+  <rect x="404" y="182" width="52" height="10" rx="5" fill="#F2D68A" fill-opacity="0.7"/>
+  <rect x="404" y="202" width="38" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.18"/>
+
+  <rect x="492" y="146" width="150" height="104" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <rect x="514" y="172" width="44" height="10" rx="5" fill="#E02035" fill-opacity="0.85"/>
+  <rect x="514" y="196" width="106" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.14"/>
+  <rect x="514" y="216" width="82" height="8" rx="4" fill="#D4AF37" fill-opacity="0.45"/>
+
+  <rect x="660" y="146" width="144" height="104" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <rect x="684" y="212" width="14" height="22" rx="4" fill="#D4AF37" fill-opacity="0.45"/>
+  <rect x="708" y="192" width="14" height="42" rx="4" fill="#D4AF37" fill-opacity="0.7"/>
+  <rect x="732" y="172" width="14" height="62" rx="4" fill="#F2D68A"/>
+  <rect x="756" y="184" width="14" height="50" rx="4" fill="#E02035" fill-opacity="0.85"/>
+
+  <!-- Assessment analytics panel -->
+  <rect x="324" y="270" width="480" height="172" rx="14" fill="#111115" stroke="#D4AF37" stroke-opacity="0.25"/>
+  <path d="M356 394 C415 386, 445 330, 505 338 C565 346, 610 296, 675 304 C720 310, 745 292, 774 286"
+        stroke="url(#sa-gold)" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="505" cy="338" r="6" fill="#F2D68A"/>
+  <circle cx="675" cy="304" r="6" fill="#F2D68A"/>
+  <circle cx="774" cy="286" r="6" fill="#E02035"/>
+  <line x1="356" y1="412" x2="774" y2="412" stroke="#FFFFFF" stroke-opacity="0.1"/>
+</svg>

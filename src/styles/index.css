@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #080808;
+  --color-obsidian-soft: #111111;
+  --color-obsidian-elevated: #161618;
+  --color-crimson: #A30F20;
+  --color-crimson-neon: #E02035;
+  --color-gold: #D4AF37;
+  --color-gold-champagne: #F2D68A;
+  --color-ivory: #F5F2ED;
+  --color-ash: #A6A6A6;
+
+  --font-display: "Syne", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg-primary: #080808;
+    --bg-secondary: #111111;
+    --crimson: #A30F20;
+    --crimson-neon: #E02035;
+    --gold: #D4AF37;
+    --gold-champagne: #F2D68A;
+    --text-primary: #F5F2ED;
+    --text-secondary: #A6A6A6;
+  }
+
+  html {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: clip;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid var(--gold-champagne);
+    outline-offset: 3px;
+  }
+
+  /* Custom subtle dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.45), rgba(163, 15, 32, 0.65));
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(242, 214, 138, 0.75), rgba(224, 32, 53, 0.85));
+  }
+}
+
+/* Typography & luxury utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F2D68A 0%, #D4AF37 50%, #9E7B23 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-crimson-gold-gradient {
+  background: linear-gradient(95deg, #F5F2ED 0%, #F2D68A 48%, #E02035 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Architectural glass surface */
+.glass-panel {
+  background: linear-gradient(160deg, rgba(22, 22, 24, 0.78) 0%, rgba(12, 12, 14, 0.88) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+}
+
+.glass-nav {
+  background: rgba(8, 8, 8, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Gold border illumination on hover */
+.gold-card {
+  position: relative;
+  background: linear-gradient(165deg, rgba(20, 20, 22, 0.92) 0%, rgba(12, 12, 14, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.gold-card:hover,
+.gold-card:focus-within {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.65),
+    0 0 28px rgba(212, 175, 55, 0.12),
+    inset 0 1px 0 rgba(242, 214, 138, 0.25);
+}
+
+/* Subtle luxury architectural grid */
+.bg-luxury-grid {
+  background-image:
+    linear-gradient(to right, rgba(212, 175, 55, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Ambient keyframes (opt-in via prefers-reduced-motion: no-preference) */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+.animate-ambient-pulse {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ambientPulse 7s ease-in-out infinite;
+  }
+}
+
+.animate-subtle-float {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: subtleFloat 6.5s ease-in-out infinite;
+  }
+}
+
+.motion-paused .animate-ambient-pulse,
+.motion-paused .animate-subtle-float {
+  animation-play-state: paused !important;
+}
+
+/* ============================================================
+   Native <dialog> Modal Architecture (Modern Web Guidance)
+   - Never set display unconditionally on dialog; scope to [open]
+   - Contain scroll on both dialog:modal and dialog::backdrop
+   ============================================================ */
+dialog.aathiaa-dialog {
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  max-width: min(92vw, 56rem);
+  max-height: 90dvh;
+  width: 100%;
+  overflow: auto;
+}
+
+dialog.aathiaa-dialog[open] {
+  display: block;
+}
+
+dialog.aathiaa-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.aathiaa-dialog::backdrop {
+  background: rgba(4, 4, 6, 0.84);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.aathiaa-dialog {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+    transition:
+      opacity 0.24s ease-out,
+      transform 0.24s ease-out,
+      display 0.24s allow-discrete,
+      overlay 0.24s allow-discrete;
+  }
+
+  dialog.aathiaa-dialog[open] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @starting-style {
+    dialog.aathiaa-dialog[open] {
+      opacity: 0;
+      transform: translateY(14px) scale(0.985);
+    }
+  }
+}
+
+/* ============================================================
+   Form Validation After Interaction (:user-invalid + fallback)
+   ============================================================ */
+.aathiaa-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(14, 14, 16, 0.92);
+  color: #F5F2ED;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.aathiaa-input::placeholder {
+  color: rgba(166, 166, 166, 0.55);
+}
+
+.aathiaa-input:focus {
+  border-color: rgba(212, 175, 55, 0.72);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+  outline: none;
+}
+
+.aathiaa-input:is(:user-invalid, .user-invalid-fallback) {
+  border-color: #E02035;
+  background-color: rgba(163, 15, 32, 0.09);
+}
+
+.aathiaa-input:is(:user-valid, .user-valid-fallback) {
+  border-color: rgba(212, 175, 55, 0.52);
+}
+
+.field-error-msg {
+  display: none;
+  margin-top: 0.45rem;
+  font-size: 0.84rem;
+  color: #FF6B7B;
+}
+
+.aathiaa-input:is(:user-invalid, .user-invalid-fallback) + .field-error-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+/* Visually hidden utility for live announcements & skip link */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}

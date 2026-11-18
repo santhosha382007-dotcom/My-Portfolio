@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#080808"/>
+  <radialGradient id="crimsonGlow" cx="0.22" cy="0.3" r="0.65">
+    <stop offset="0%" stop-color="#A30F20" stop-opacity="0.45"/>
+    <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="goldGlow" cx="0.82" cy="0.72" r="0.55">
+    <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.24"/>
+    <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="goldStroke" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#F2D68A"/>
+    <stop offset="0.5" stop-color="#D4AF37"/>
+    <stop offset="1" stop-color="#8A691B"/>
+  </linearGradient>
+  <rect width="1200" height="630" fill="url(#crimsonGlow)"/>
+  <rect width="1200" height="630" fill="url(#goldGlow)"/>
+  <rect x="36" y="36" width="1128" height="558" rx="20" stroke="url(#goldStroke)" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="96" y="210" fill="#D4AF37" font-family="system-ui, sans-serif" font-size="24" letter-spacing="10" font-weight="600">AATHIAA // PORTFOLIO</text>
+  <text x="96" y="310" fill="#F5F2ED" font-family="system-ui, sans-serif" font-size="76" font-weight="700" letter-spacing="2">SANTHOSH A.</text>
+  <text x="96" y="380" fill="#F2D68A" font-family="system-ui, sans-serif" font-size="34" font-weight="500">I Turn Ideas Into Intelligent Solutions.</text>
+  <text x="96" y="455" fill="#A6A6A6" font-family="system-ui, sans-serif" font-size="24" letter-spacing="3">CYBER SECURITY  •  SOFTWARE ENGINEERING  •  AI INNOVATION</text>
+  <line x1="96" y1="510" x2="420" y2="510" stroke="#E02035" stroke-width="3"/>
+</svg>

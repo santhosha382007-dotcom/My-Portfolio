@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <defs>
+    <radialGradient id="fs-bg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#220A0D"/>
+      <stop offset="52%" stop-color="#0D0A0B"/>
+      <stop offset="100%" stop-color="#070708"/>
+    </radialGradient>
+    <radialGradient id="fs-heat" cx="50%" cy="50%" r="36%">
+      <stop offset="0%" stop-color="#E02035" stop-opacity="0.52"/>
+      <stop offset="48%" stop-color="#A30F20" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fs-gold" x1="300" y1="110" x2="660" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F2D68A"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8A691B"/>
+    </linearGradient>
+    <linearGradient id="fs-dome" x1="480" y1="150" x2="480" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E1D20"/>
+      <stop offset="100%" stop-color="#0B0B0D"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#fs-bg)"/>
+  <rect width="960" height="540" fill="url(#fs-heat)"/>
+
+  <!-- Architectural circuit conduits -->
+  <g stroke="url(#fs-gold)" stroke-opacity="0.36" stroke-width="1.8" stroke-linecap="round">
+    <path d="M90 160 H260 L320 220"/>
+    <path d="M90 380 H260 L320 320"/>
+    <path d="M870 160 H700 L640 220"/>
+    <path d="M870 380 H700 L640 320"/>
+    <path d="M480 42 V120"/>
+    <path d="M480 420 V498"/>
+  </g>
+  <g fill="#F2D68A">
+    <circle cx="90" cy="160" r="4"/>
+    <circle cx="90" cy="380" r="4"/>
+    <circle cx="870" cy="160" r="4"/>
+    <circle cx="870" cy="380" r="4"/>
+  </g>
+
+  <!-- Outer thermal scanning rings -->
+  <circle cx="480" cy="270" r="205" stroke="#E02035" stroke-opacity="0.22" stroke-width="1.5" stroke-dasharray="14 10"/>
+  <circle cx="480" cy="270" r="164" stroke="#E02035" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="48 16"/>
+  <circle cx="480" cy="270" r="126" stroke="url(#fs-gold)" stroke-width="2.5"/>
+
+  <!-- Precision sensor dome -->
+  <circle cx="480" cy="270" r="106" fill="url(#fs-dome)" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="480" cy="270" r="72" fill="#0B0B0D" stroke="#E02035" stroke-opacity="0.7" stroke-width="2"/>
+  <circle cx="480" cy="270" r="36" fill="#A30F20" fill-opacity="0.32" stroke="#F2D68A" stroke-width="2"/>
+  <circle cx="480" cy="270" r="12" fill="#E02035"/>
+
+  <!-- Crosshair calibration ticks -->
+  <g stroke="#F2D68A" stroke-opacity="0.65" stroke-width="2" stroke-linecap="round">
+    <line x1="480" y1="146" x2="480" y2="178"/>
+    <line x1="480" y1="362" x2="480" y2="394"/>
+    <line x1="356" y1="270" x2="388" y2="270"/>
+    <line x1="572" y1="270" x2="604" y2="270"/>
+  </g>
+
+  <!-- Protective suppression mist particle arcs -->
+  <g fill="#F2D68A" fill-opacity="0.45">
+    <circle cx="290" cy="270" r="3"/>
+    <circle cx="268" cy="252" r="2.5"/>
+    <circle cx="268" cy="288" r="2.5"/>
+    <circle cx="670" cy="270" r="3"/>
+    <circle cx="692" cy="252" r="2.5"/>
+    <circle cx="692" cy="288" r="2.5"/>
+    <circle cx="385" cy="128" r="2.5"/>
+    <circle cx="575" cy="128" r="2.5"/>
+    <circle cx="385" cy="412" r="2.5"/>
+    <circle cx="575" cy="412" r="2.5"/>
+  </g>
+</svg>

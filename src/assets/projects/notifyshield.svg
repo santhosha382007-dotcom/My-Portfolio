@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <defs>
+    <radialGradient id="ns-bg" cx="50%" cy="48%" r="65%">
+      <stop offset="0%" stop-color="#1E080C"/>
+      <stop offset="55%" stop-color="#0C0A0C"/>
+      <stop offset="100%" stop-color="#070708"/>
+    </radialGradient>
+    <radialGradient id="ns-crimson" cx="22%" cy="35%" r="48%">
+      <stop offset="0%" stop-color="#E02035" stop-opacity="0.45"/>
+      <stop offset="55%" stop-color="#A30F20" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ns-gold-glow" cx="52%" cy="48%" r="36%">
+      <stop offset="0%" stop-color="#F2D68A" stop-opacity="0.34"/>
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ns-gold" x1="340" y1="80" x2="620" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F2D68A"/>
+      <stop offset="45%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#7D5E18"/>
+    </linearGradient>
+    <linearGradient id="ns-shield-fill" x1="480" y1="100" x2="480" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1C1915"/>
+      <stop offset="55%" stop-color="#100E0F"/>
+      <stop offset="100%" stop-color="#080708"/>
+    </linearGradient>
+    <linearGradient id="ns-threat" x1="80" y1="160" x2="365" y2="270" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E02035" stop-opacity="0"/>
+      <stop offset="65%" stop-color="#E02035" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FF6B7B"/>
+    </linearGradient>
+    <pattern id="ns-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#D4AF37" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#ns-bg)"/>
+  <rect width="960" height="540" fill="url(#ns-grid)"/>
+  <rect width="960" height="540" fill="url(#ns-crimson)"/>
+  <rect width="960" height="540" fill="url(#ns-gold-glow)"/>
+
+  <!-- Radar & concentric security rings -->
+  <circle cx="480" cy="270" r="220" stroke="#D4AF37" stroke-opacity="0.1" stroke-dasharray="4 8"/>
+  <circle cx="480" cy="270" r="175" stroke="#D4AF37" stroke-opacity="0.16"/>
+  <circle cx="480" cy="270" r="128" stroke="#E02035" stroke-opacity="0.22" stroke-dasharray="12 6"/>
+
+  <!-- Deflected phishing threat arcs on left -->
+  <path d="M60 155 C165 180, 250 220, 355 246" stroke="url(#ns-threat)" stroke-width="2.5"/>
+  <path d="M40 270 C150 270, 240 270, 344 270" stroke="url(#ns-threat)" stroke-width="3"/>
+  <path d="M75 385 C175 355, 255 318, 358 296" stroke="url(#ns-threat)" stroke-width="2.5"/>
+
+  <!-- Deflection sparks -->
+  <path d="M355 246 L312 185" stroke="#E02035" stroke-opacity="0.55" stroke-width="1.5"/>
+  <path d="M358 296 L316 358" stroke="#E02035" stroke-opacity="0.55" stroke-width="1.5"/>
+  <circle cx="352" cy="270" r="6" fill="#E02035"/>
+  <circle cx="352" cy="270" r="16" stroke="#E02035" stroke-opacity="0.45" stroke-width="1.5"/>
+
+  <!-- Protected memory nodes on right -->
+  <g stroke="#D4AF37" stroke-opacity="0.45" stroke-width="1.5">
+    <path d="M604 270 L725 270"/>
+    <path d="M598 228 L705 185"/>
+    <path d="M598 312 L705 355"/>
+  </g>
+  <g fill="#121214" stroke="url(#ns-gold)" stroke-width="1.5">
+    <rect x="725" y="252" width="118" height="36" rx="8"/>
+    <rect x="705" y="167" width="102" height="36" rx="8"/>
+    <rect x="705" y="337" width="102" height="36" rx="8"/>
+  </g>
+  <circle cx="744" cy="270" r="4" fill="#F2D68A"/>
+  <circle cx="724" cy="185" r="4" fill="#D4AF37"/>
+  <circle cx="724" cy="355" r="4" fill="#D4AF37"/>
+  <rect x="758" y="266" width="64" height="8" rx="4" fill="#D4AF37" fill-opacity="0.32"/>
+  <rect x="738" y="181" width="50" height="8" rx="4" fill="#D4AF37" fill-opacity="0.25"/>
+  <rect x="738" y="351" width="50" height="8" rx="4" fill="#D4AF37" fill-opacity="0.25"/>
+
+  <!-- Sculpted Hexagonal Cryptographic Shield -->
+  <path d="M480 98 L602 146 V266 C602 350 548 412 480 442 C412 412 358 350 358 266 V146 L480 98 Z"
+        fill="url(#ns-shield-fill)" stroke="url(#ns-gold)" stroke-width="3"/>
+  <path d="M480 120 L582 160 V262 C582 334 537 386 480 414 C423 386 378 334 378 262 V160 L480 120 Z"
+        stroke="#D4AF37" stroke-opacity="0.32" stroke-width="1.2"/>
+
+  <!-- Inner geometric cyber emblem & delayed-alert clock arc -->
+  <circle cx="480" cy="256" r="54" stroke="url(#ns-gold)" stroke-width="2" stroke-opacity="0.75"/>
+  <path d="M480 202 A54 54 0 0 1 530 276" stroke="#E02035" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M480 226 V256 L504 270" stroke="#F2D68A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="480" cy="256" r="5" fill="#F2D68A"/>
+
+  <!-- Bottom metallic telemetry bar -->
+  <line x1="428" y1="342" x2="532" y2="342" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="480" cy="368" r="4" fill="#E02035"/>
+</svg>

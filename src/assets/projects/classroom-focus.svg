@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <defs>
+    <radialGradient id="cf-bg" cx="50%" cy="48%" r="65%">
+      <stop offset="0%" stop-color="#19140E"/>
+      <stop offset="55%" stop-color="#0B0B0D"/>
+      <stop offset="100%" stop-color="#070708"/>
+    </radialGradient>
+    <radialGradient id="cf-gold-center" cx="50%" cy="48%" r="32%">
+      <stop offset="0%" stop-color="#F2D68A" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cf-crimson" cx="24%" cy="76%" r="36%">
+      <stop offset="0%" stop-color="#E02035" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cf-gold" x1="320" y1="120" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F2D68A"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8A691B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#cf-bg)"/>
+  <rect width="960" height="540" fill="url(#cf-gold-center)"/>
+  <rect width="960" height="540" fill="url(#cf-crimson)"/>
+
+  <!-- Harmonic classroom focus wave rings -->
+  <circle cx="480" cy="260" r="210" stroke="#D4AF37" stroke-opacity="0.12" stroke-width="1.5"/>
+  <circle cx="480" cy="260" r="160" stroke="#D4AF37" stroke-opacity="0.24" stroke-width="1.5" stroke-dasharray="8 8"/>
+  <circle cx="480" cy="260" r="112" stroke="url(#cf-gold)" stroke-opacity="0.5" stroke-width="2"/>
+
+  <!-- Connection beams from central teacher/focus hub to student desk beacons -->
+  <g stroke="#D4AF37" stroke-opacity="0.35" stroke-width="1.8">
+    <line x1="480" y1="260" x2="210" y2="155"/>
+    <line x1="480" y1="260" x2="750" y2="155"/>
+    <line x1="480" y1="260" x2="185" y2="345"/>
+    <line x1="480" y1="260" x2="775" y2="345"/>
+    <line x1="480" y1="260" x2="345" y2="435"/>
+    <line x1="480" y1="260" x2="615" y2="435"/>
+  </g>
+
+  <!-- Central Teacher & Adaptive IoT Hub -->
+  <circle cx="480" cy="260" r="62" fill="#111114" stroke="url(#cf-gold)" stroke-width="3"/>
+  <circle cx="480" cy="260" r="34" fill="#1A1610" stroke="#F2D68A" stroke-opacity="0.65" stroke-width="1.5"/>
+  <circle cx="480" cy="260" r="10" fill="#F2D68A"/>
+
+  <!-- Student Desk Beacons -->
+  <g>
+    <!-- Top Left -->
+    <rect x="160" y="125" width="100" height="60" rx="14" fill="#121215" stroke="#D4AF37" stroke-opacity="0.55" stroke-width="1.6"/>
+    <circle cx="188" cy="155" r="6" fill="#F2D68A"/>
+    <rect x="206" y="151" width="36" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.22"/>
+
+    <!-- Top Right -->
+    <rect x="700" y="125" width="100" height="60" rx="14" fill="#121215" stroke="#D4AF37" stroke-opacity="0.55" stroke-width="1.6"/>
+    <circle cx="728" cy="155" r="6" fill="#F2D68A"/>
+    <rect x="746" y="151" width="36" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.22"/>
+
+    <!-- Mid Left (alert telemetry node) -->
+    <rect x="135" y="315" width="100" height="60" rx="14" fill="#121215" stroke="#E02035" stroke-opacity="0.7" stroke-width="1.6"/>
+    <circle cx="163" cy="345" r="6" fill="#E02035"/>
+    <rect x="181" y="341" width="36" height="8" rx="4" fill="#E02035" fill-opacity="0.45"/>
+
+    <!-- Mid Right -->
+    <rect x="725" y="315" width="100" height="60" rx="14" fill="#121215" stroke="#D4AF37" stroke-opacity="0.55" stroke-width="1.6"/>
+    <circle cx="753" cy="345" r="6" fill="#F2D68A"/>
+    <rect x="771" y="341" width="36" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.22"/>
+
+    <!-- Bottom Left -->
+    <rect x="295" y="405" width="100" height="60" rx="14" fill="#121215" stroke="#D4AF37" stroke-opacity="0.45" stroke-width="1.6"/>
+    <circle cx="323" cy="435" r="6" fill="#D4AF37"/>
+    <rect x="341" y="431" width="36" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.2"/>
+
+    <!-- Bottom Right -->
+    <rect x="565" y="405" width="100" height="60" rx="14" fill="#121215" stroke="#D4AF37" stroke-opacity="0.45" stroke-width="1.6"/>
+    <circle cx="593" cy="435" r="6" fill="#D4AF37"/>
+    <rect x="611" y="431" width="36" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.2"/>
+  </g>
+</svg>
