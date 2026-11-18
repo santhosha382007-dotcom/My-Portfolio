@@ -80,7 +80,7 @@ export default async function handler(req, res) {
     const result = await sendContactEmail(validation.data);
     return res.status(200).json({
       ok: true,
-      provider: 'smtp',
+      provider: result.provider,
       messageId: result.messageId,
       message: `Thank you for reaching out. Your message has been delivered directly to Santhosh A. (${result.receiverEmail}).`,
     });

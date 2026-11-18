@@ -8,9 +8,25 @@ const RATE_LIMIT_MAX_REQUESTS = 5;
 
 const rateLimitStore = new Map();
 
+function isRealSecret(value) {
+  const cleaned = String(value || '').trim();
+  if (!cleaned) return false;
+  const lower = cleaned.toLowerCase();
+  return !lower.startsWith('your_') && !lower.includes('replace_with');
+}
+
 export function getMailConfig() {
   const receiverEmail =
     process.env.CONTACT_RECEIVER_EMAIL?.trim() || DEFAULT_CONTACT_EMAIL;
+
+  // Option A: Resend HTTPS API (Port 443 — works on Render Free Tier & everywhere)
+  const resendApiKey = process.env.RESEND_API_KEY?.trim() || '';
+  const resendFrom =
+    process.env.RESEND_FROM?.trim() ||
+    'AATHIAA Portfolio <onboarding@resend.dev>';
+  const resendConfigured = isRealSecret(resendApiKey);
+
+  // Option B: Gmail / Custom SMTP (works locally, Vercel, and Render Paid plans)
   const smtpUser =
     process.env.GMAIL_USER?.trim() ||
     process.env.SMTP_USER?.trim() ||
@@ -25,21 +41,26 @@ export function getMailConfig() {
       ? process.env.SMTP_SECURE === 'true'
       : smtpPort === 465;
 
-  const isConfigured = Boolean(
-    smtpUser &&
-      smtpPass &&
-      !smtpPass.toLowerCase().startsWith('your_') &&
-      !smtpPass.toLowerCase().includes('replace_with'),
-  );
+  const smtpConfigured = Boolean(smtpUser && isRealSecret(smtpPass));
+  const provider = resendConfigured
+    ? 'resend'
+    : smtpConfigured
+      ? 'smtp'
+      : 'none';
 
   return {
     receiverEmail,
+    resendApiKey,
+    resendFrom,
+    resendConfigured,
     smtpUser,
     smtpPass,
     smtpHost,
     smtpPort,
     smtpSecure,
-    isConfigured,
+    smtpConfigured,
+    provider,
+    isConfigured: resendConfigured || smtpConfigured,
   };
 }
 
@@ -129,25 +150,7 @@ function stripHeaderInjection(value) {
   return String(value).replace(/[\r\n]+/g, ' ').trim();
 }
 
-export async function sendContactEmail({ fullName, email, subject, message }) {
-  const config = getMailConfig();
-
-  if (!config.isConfigured) {
-    const err = new Error('SMTP credentials are not configured.');
-    err.code = 'SMTP_NOT_CONFIGURED';
-    throw err;
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: config.smtpHost,
-    port: config.smtpPort,
-    secure: config.smtpSecure,
-    auth: {
-      user: config.smtpUser,
-      pass: config.smtpPass,
-    },
-  });
-
+function buildEmailContent({ fullName, email, subject, message }, receiverEmail) {
   const safeSubject = stripHeaderInjection(subject);
   const safeName = stripHeaderInjection(fullName);
   const safeEmail = stripHeaderInjection(email);
@@ -214,23 +217,91 @@ export async function sendContactEmail({ fullName, email, subject, message }) {
       </tr>
       <tr>
         <td style="padding:16px 28px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:#8E8E93;">
-          Delivered directly to ${escapeHtml(config.receiverEmail)} from your AATHIAA portfolio contact bar.
+          Delivered directly to ${escapeHtml(receiverEmail)} from your AATHIAA portfolio contact bar.
         </td>
       </tr>
     </table>
   </body>
 </html>`;
 
+  return {
+    safeName,
+    safeEmail,
+    safeSubject,
+    emailSubject: `[Portfolio Message] ${safeSubject}`,
+    plainText,
+    html,
+  };
+}
+
+export async function sendContactEmail(payload) {
+  const config = getMailConfig();
+
+  if (!config.isConfigured) {
+    const err = new Error('Mail credentials are not configured.');
+    err.code = 'SMTP_NOT_CONFIGURED';
+    throw err;
+  }
+
+  const content = buildEmailContent(payload, config.receiverEmail);
+
+  // 1. Prefer Resend HTTPS API (Port 443 — never blocked on Render Free Tier)
+  if (config.resendConfigured) {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${config.resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: config.resendFrom,
+        to: [config.receiverEmail],
+        reply_to: content.safeEmail,
+        subject: content.emailSubject,
+        text: content.plainText,
+        html: content.html,
+      }),
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(
+        result?.message || `Resend API error (HTTP ${response.status})`,
+      );
+    }
+
+    return {
+      provider: 'resend',
+      messageId: result.id || 'resend',
+      receiverEmail: config.receiverEmail,
+    };
+  }
+
+  // 2. Fallback to Gmail / Custom SMTP via Nodemailer
+  const transporter = nodemailer.createTransport({
+    host: config.smtpHost,
+    port: config.smtpPort,
+    secure: config.smtpSecure,
+    connectionTimeout: 8000,
+    greetingTimeout: 8000,
+    socketTimeout: 10000,
+    auth: {
+      user: config.smtpUser,
+      pass: config.smtpPass,
+    },
+  });
+
   const info = await transporter.sendMail({
     from: `"AATHIAA Portfolio" <${config.smtpUser}>`,
     to: config.receiverEmail,
-    replyTo: `"${safeName.replace(/"/g, '')}" <${safeEmail}>`,
-    subject: `[Portfolio Message] ${safeSubject}`,
-    text: plainText,
-    html,
+    replyTo: `"${content.safeName.replace(/"/g, '')}" <${content.safeEmail}>`,
+    subject: content.emailSubject,
+    text: content.plainText,
+    html: content.html,
   });
 
   return {
+    provider: 'smtp',
     messageId: info.messageId,
     receiverEmail: config.receiverEmail,
   };

@@ -20,7 +20,10 @@ dotenv.config({ path: path.join(rootDir, '.env.local'), quiet: true });
 dotenv.config({ path: path.join(rootDir, '.env'), quiet: true });
 
 const app = express();
-const PORT = Number(process.env.API_PORT || process.env.PORT || 3004);
+const isProduction =
+  process.env.NODE_ENV === 'production' || Boolean(process.env.RENDER);
+const PORT = Number(process.env.PORT || process.env.API_PORT || 3004);
+const HOST = process.env.HOST || (isProduction ? '0.0.0.0' : '127.0.0.1');
 
 app.set('trust proxy', 1);
 
@@ -41,7 +44,8 @@ app.get('/api/health', (_req, res) => {
   res.json({
     ok: true,
     receiverEmail: config.receiverEmail,
-    smtpConfigured: config.isConfigured,
+    mailProvider: config.provider,
+    mailConfigured: config.isConfigured,
   });
 });
 
@@ -87,7 +91,7 @@ app.post('/api/contact', async (req, res) => {
       fallbackAllowed: true,
       receiverEmail: config.receiverEmail,
       error:
-        'Backend Gmail SMTP App Password is not configured yet in .env.local.',
+        'Backend mail credentials (RESEND_API_KEY or GMAIL_APP_PASSWORD) are not configured yet.',
     });
   }
 
@@ -95,7 +99,7 @@ app.post('/api/contact', async (req, res) => {
     const result = await sendContactEmail(validation.data);
     return res.status(200).json({
       ok: true,
-      provider: 'smtp',
+      provider: result.provider,
       messageId: result.messageId,
       message: `Thank you for reaching out. Your message has been delivered directly to Santhosh A. (${result.receiverEmail}).`,
     });
@@ -106,25 +110,32 @@ app.post('/api/contact', async (req, res) => {
       code: 'SMTP_SEND_FAILED',
       fallbackAllowed: true,
       error:
-        'Unable to deliver via SMTP right now. Please try again shortly or email santhosha382007@gmail.com directly.',
+        'Unable to deliver via backend mail right now. Please try again shortly or email santhosha382007@gmail.com directly.',
     });
   }
 });
 
-// Serve built static frontend when running the backend in production mode
+// Serve built static frontend on Render or in production mode
 const distDir = path.join(rootDir, 'dist');
-if (process.env.NODE_ENV === 'production' && fs.existsSync(distDir)) {
+const shouldServeStatic =
+  process.env.SERVE_STATIC !== 'false' &&
+  (isProduction || process.env.SERVE_STATIC === 'true') &&
+  fs.existsSync(distDir);
+
+if (shouldServeStatic) {
   app.use(express.static(distDir));
   app.get('/{*splat}', (_req, res) => {
     res.sendFile(path.join(distDir, 'index.html'));
   });
 }
 
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, HOST, () => {
   const config = getMailConfig();
   console.log(
-    `[contact-api] Running on http://localhost:${PORT} | Receiver: ${config.receiverEmail} | Gmail SMTP: ${
-      config.isConfigured ? 'READY' : 'NOT CONFIGURED (add GMAIL_APP_PASSWORD in .env.local)'
+    `[contact-api] Running on http://${HOST}:${PORT} | Static UI: ${
+      shouldServeStatic ? 'ON' : 'OFF'
+    } | Receiver: ${config.receiverEmail} | Mail Provider: ${
+      config.isConfigured ? config.provider.toUpperCase() : 'NOT CONFIGURED'
     }`,
   );
 });
