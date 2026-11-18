@@ -103,9 +103,9 @@ export const Footer: React.FC<FooterProps> = ({ onNotice }) => {
             <p>
               &copy; {currentYear}{' '}
               <span className="font-semibold text-[#F5F2ED]">
-                {PROFILE.brandName}
-              </span>{' '}
-              — {PROFILE.ownerName}. All rights reserved.
+                {PROFILE.ownerName}
+              </span>
+              . All rights reserved.
             </p>
             <p className="font-mono-tech text-[11px] text-[#A6A6A6]">
               Crafted with precision • Obsidian, Crimson &amp; Gold

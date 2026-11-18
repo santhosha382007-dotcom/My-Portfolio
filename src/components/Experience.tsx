@@ -67,11 +67,10 @@ export const Experience: React.FC = () => {
                 type="button"
                 aria-selected={active}
                 onClick={() => setSelectedCategory(category)}
-                className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-medium tracking-wide transition-all duration-200 sm:text-sm ${
-                  active
-                    ? 'border-[#D4AF37]/70 bg-gradient-to-r from-[#A30F20]/45 to-[#1B1510] text-[#F2D68A] shadow-[0_0_20px_rgba(212,175,55,0.16)]'
-                    : 'border-white/10 bg-[#111111]/80 text-[#A6A6A6] hover:border-[#D4AF37]/35 hover:text-[#F5F2ED]'
-                }`}
+                className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-medium tracking-wide transition-all duration-200 sm:text-sm ${active
+                  ? 'border-[#D4AF37]/70 bg-gradient-to-r from-[#A30F20]/45 to-[#1B1510] text-[#F2D68A] shadow-[0_0_20px_rgba(212,175,55,0.16)]'
+                  : 'border-white/10 bg-[#111111]/80 text-[#A6A6A6] hover:border-[#D4AF37]/35 hover:text-[#F5F2ED]'
+                  }`}
               >
                 {category}
               </button>
@@ -108,29 +107,26 @@ export const Experience: React.FC = () => {
                   {/* Timeline Node Marker */}
                   <div
                     aria-hidden="true"
-                    className={`absolute top-6 left-4 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border md:left-1/2 ${
-                      entry.isPlaceholder
-                        ? 'border-white/25 bg-[#121214] text-[#A6A6A6]'
-                        : 'border-[#F2D68A] bg-gradient-to-br from-[#A30F20] to-[#1A130D] text-[#F2D68A] shadow-[0_0_22px_rgba(212,175,55,0.45)]'
-                    }`}
+                    className={`absolute top-6 left-4 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border md:left-1/2 ${entry.isPlaceholder
+                      ? 'border-white/25 bg-[#121214] text-[#A6A6A6]'
+                      : 'border-[#F2D68A] bg-gradient-to-br from-[#A30F20] to-[#1A130D] text-[#F2D68A] shadow-[0_0_22px_rgba(212,175,55,0.45)]'
+                      }`}
                   >
                     <Icon className="h-4 w-4" />
                   </div>
 
                   {/* Card Container */}
                   <div
-                    className={`pl-12 md:pl-0 ${
-                      isLeft
-                        ? 'md:col-start-1 md:pr-8'
-                        : 'md:col-start-2 md:pl-8'
-                    }`}
+                    className={`pl-12 md:pl-0 ${isLeft
+                      ? 'md:col-start-1 md:pr-8'
+                      : 'md:col-start-2 md:pl-8'
+                      }`}
                   >
                     <article
-                      className={`gold-card rounded-2xl p-6 ${
-                        entry.isPlaceholder
-                          ? 'border-dashed border-white/14 opacity-90'
-                          : 'border-[#D4AF37]/38'
-                      }`}
+                      className={`gold-card rounded-2xl p-6 ${entry.isPlaceholder
+                        ? 'border-dashed border-white/14 opacity-90'
+                        : 'border-[#D4AF37]/38'
+                        }`}
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <span className="font-mono-tech inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[11px] font-medium tracking-wider text-[#F2D68A] uppercase">

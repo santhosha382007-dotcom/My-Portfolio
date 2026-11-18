@@ -39,7 +39,7 @@ const CertificatePlaceholderArtwork: React.FC<{
 
     <div className="relative z-10 flex items-center justify-between gap-2">
       <span className="font-mono-tech text-[10px] tracking-[0.26em] text-[#D4AF37] uppercase">
-        AATHIAA // {item.code}
+        SANTHOSH // {item.code}
       </span>
       <span
         className={`font-mono-tech rounded border px-2 py-0.5 text-[10px] tracking-wider uppercase ${

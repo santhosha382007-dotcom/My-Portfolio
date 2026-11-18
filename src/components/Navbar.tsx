@@ -54,11 +54,11 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        {/* Left: AATHIAA Wordmark */}
+        {/* Left: SANTHOSH Wordmark */}
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, '#home')}
-          aria-label="AATHIAA — Return to Home"
+          aria-label="SANTHOSH — Return to Home"
           className="shrink-0 rounded-lg focus-visible:outline-[#F2D68A]"
         >
           <BrandMark size="md" />

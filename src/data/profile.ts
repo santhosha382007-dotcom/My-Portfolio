@@ -23,7 +23,7 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const PROFILE = {
-  brandName: 'AATHIAA',
+  brandName: 'SANTHOSH',
   ownerName: 'Santhosh A.',
   contactEmail: 'santhosha382007@gmail.com',
   heroGreeting: "HELLO, I'M",
