@@ -15,10 +15,10 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { id: 'home', label: 'Home', href: '#home' },
   { id: 'about', label: 'About', href: '#about' },
+  { id: 'business', label: 'My Business', href: '#business' },
   { id: 'education', label: 'Education', href: '#education' },
   { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'projects', label: 'Projects', href: '#projects' },
-  { id: 'certifications', label: 'Certifications', href: '#certifications' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
@@ -98,21 +98,21 @@ export const PROFILE = {
       id: 'github',
       label: 'GitHub',
       href: 'https://github.com/santhosha382007-dotcom',
-      displayValue: 'github.com/santhosha382007-dotcom',
+      displayValue: 'View GitHub Profile',
       isPlaceholder: false,
     },
     {
       id: 'linkedin',
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/santhosh-a-9b9140376?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      displayValue: 'Santhosh A. on LinkedIn',
+      displayValue: 'Connect on LinkedIn',
       isPlaceholder: false,
     },
     {
       id: 'instagram',
       label: 'Instagram',
       href: 'https://www.instagram.com/santhosh._.3807?fqnt=ejh6aTl6aDhwNXM1',
-      displayValue: '@santhosh._.3807',
+      displayValue: 'Follow on Instagram',
       isPlaceholder: false,
     },
     {
@@ -126,7 +126,7 @@ export const PROFILE = {
       id: 'email',
       label: 'Email',
       href: 'mailto:santhosha382007@gmail.com',
-      displayValue: 'santhosha382007@gmail.com',
+      displayValue: 'Send Direct Message',
       isPlaceholder: false,
     },
   ] as SocialLink[],

@@ -52,10 +52,11 @@ export const Footer: React.FC<FooterProps> = ({ onNotice }) => {
               </p>
               <a
                 href={`mailto:${PROFILE.contactEmail}`}
+                aria-label="Send direct email to Santhosh A."
                 className="font-mono-tech mt-3 inline-flex items-center gap-2 text-xs text-[#D4AF37] transition-colors hover:text-[#F2D68A]"
               >
                 <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                <span>{PROFILE.contactEmail}</span>
+                <span>Contact via Direct Email</span>
               </a>
             </div>
 

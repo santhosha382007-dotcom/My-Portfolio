@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { About } from '../components/About';
-import { Certifications } from '../components/Certifications';
+import { MyBusiness } from '../components/MyBusiness';
 import { Contact } from '../components/Contact';
 import { Experience } from '../components/Experience';
 import { Footer } from '../components/Footer';
@@ -57,10 +57,10 @@ export const HomePage: React.FC = () => {
           onToggleAmbient={() => setAmbientPaused((prev) => !prev)}
         />
         <About />
+        <MyBusiness />
         <Experience />
         <Skills />
         <Projects onNotice={showNotice} />
-        <Certifications />
         <Contact onNotice={showNotice} />
       </main>
 

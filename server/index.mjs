@@ -43,7 +43,7 @@ app.get('/api/health', (_req, res) => {
   const config = getMailConfig();
   res.json({
     ok: true,
-    receiverEmail: config.receiverEmail,
+    receiverConfigured: Boolean(config.receiverEmail),
     mailProvider: config.provider,
     mailConfigured: config.isConfigured,
   });
@@ -89,7 +89,6 @@ app.post('/api/contact', async (req, res) => {
       ok: false,
       code: 'SMTP_NOT_CONFIGURED',
       fallbackAllowed: true,
-      receiverEmail: config.receiverEmail,
       error:
         'Backend mail credentials (RESEND_API_KEY or GMAIL_APP_PASSWORD) are not configured yet.',
     });
@@ -101,7 +100,7 @@ app.post('/api/contact', async (req, res) => {
       ok: true,
       provider: result.provider,
       messageId: result.messageId,
-      message: `Thank you for reaching out. Your message has been delivered directly to Santhosh A. (${result.receiverEmail}).`,
+      message: 'Thank you for reaching out. Your message has been delivered directly to Santhosh A. We will get back to you shortly.',
     });
   } catch (error) {
     console.error('[contact-api] Failed to send email:', error);
@@ -110,7 +109,7 @@ app.post('/api/contact', async (req, res) => {
       code: 'SMTP_SEND_FAILED',
       fallbackAllowed: true,
       error:
-        'Unable to deliver via backend mail right now. Please try again shortly or email santhosha382007@gmail.com directly.',
+        'Unable to deliver via backend mail right now. Please try again shortly or use direct messaging channels.',
     });
   }
 });

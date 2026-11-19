@@ -47,7 +47,7 @@ export const Skills: React.FC = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="03 // CAPABILITIES"
+          eyebrow="04 // CAPABILITIES"
           title="MY TECHNICAL ARSENAL."
           subtitle="Core languages, web engineering technologies, cybersecurity fundamentals, and everyday development tools used to bring ideas to life."
         />

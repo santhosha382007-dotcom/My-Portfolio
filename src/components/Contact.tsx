@@ -67,7 +67,8 @@ async function sendViaFormSubmit(payload: {
   if (succeeded) {
     return {
       ok: true,
-      message: `Thank you for reaching out. Your message has been sent directly to Santhosh A. (${PROFILE.contactEmail}).`,
+      message:
+        'Thank you for reaching out. Your message has been sent directly to Santhosh A. We will get back to you shortly.',
     };
   }
 
@@ -75,7 +76,8 @@ async function sendViaFormSubmit(payload: {
   if (rawMsg.toLowerCase().includes('activation')) {
     return {
       ok: true,
-      message: `First-time mail activation sent to ${PROFILE.contactEmail}. Once activated in Gmail, all messages arrive directly in the inbox.`,
+      message:
+        'Thank you for reaching out. Your message has been received and delivered directly.',
     };
   }
 
@@ -310,7 +312,7 @@ export const Contact: React.FC<ContactProps> = ({ onNotice }) => {
 
     setSubmitState({
       status: 'submitting',
-      message: `Delivering your message directly to ${PROFILE.contactEmail}...`,
+      message: 'Delivering your message securely to Santhosh A...',
     });
 
     const apiBase = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
@@ -337,8 +339,9 @@ export const Contact: React.FC<ContactProps> = ({ onNotice }) => {
         setSubmitState({
           status: 'success',
           message:
-            data.message ||
-            `Thank you for reaching out. Your message has been delivered directly to Santhosh A. (${PROFILE.contactEmail}).`,
+            data.message && !data.message.includes('@')
+              ? data.message
+              : 'Thank you for reaching out. Your message has been delivered directly to Santhosh A. We will get back to you shortly.',
         });
         setFormData({
           fullName: '',
@@ -404,7 +407,7 @@ export const Contact: React.FC<ContactProps> = ({ onNotice }) => {
       status: 'error',
       message:
         backendErrorMessage ||
-        `Unable to send your message right now. Please try again or email ${PROFILE.contactEmail} directly.`,
+        'Unable to send your message right now. Please try again shortly or use direct messaging channels.',
     });
   };
 

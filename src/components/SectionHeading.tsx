@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 interface SectionHeadingProps {
   eyebrow: string;
   title: string;
+  companyName?: string;
   subtitle?: string;
   align?: 'left' | 'center';
 }
@@ -11,6 +12,7 @@ interface SectionHeadingProps {
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
   eyebrow,
   title,
+  companyName,
   subtitle,
   align = 'left',
 }) => {
@@ -39,8 +41,21 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
         {title}
       </h2>
 
+      {companyName && (
+        <div
+          className={`mt-2.5 flex items-center gap-2.5 ${
+            isCentered ? 'justify-center' : 'justify-start'
+          }`}
+        >
+          <span className="h-2 w-2 rounded-full bg-[#E02035] shadow-[0_0_8px_#E02035]" />
+          <span className="font-display text-xl font-bold tracking-wide text-[#F2D68A] sm:text-2xl">
+            {companyName}
+          </span>
+        </div>
+      )}
+
       {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-[#A6A6A6] sm:text-lg">
+        <p className="mt-3 text-base leading-relaxed text-[#A6A6A6] sm:text-lg">
           {subtitle}
         </p>
       )}

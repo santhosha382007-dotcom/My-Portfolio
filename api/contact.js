@@ -71,7 +71,6 @@ export default async function handler(req, res) {
       ok: false,
       code: 'SMTP_NOT_CONFIGURED',
       fallbackAllowed: true,
-      receiverEmail: config.receiverEmail,
       error: 'SMTP credentials are not configured on the server.',
     });
   }
@@ -82,7 +81,7 @@ export default async function handler(req, res) {
       ok: true,
       provider: result.provider,
       messageId: result.messageId,
-      message: `Thank you for reaching out. Your message has been delivered directly to Santhosh A. (${result.receiverEmail}).`,
+      message: 'Thank you for reaching out. Your message has been delivered directly to Santhosh A. We will get back to you shortly.',
     });
   } catch (error) {
     console.error('[api/contact] Failed to send email:', error);
@@ -91,7 +90,7 @@ export default async function handler(req, res) {
       code: 'SMTP_SEND_FAILED',
       fallbackAllowed: true,
       error:
-        'Unable to deliver via SMTP right now. Please try again shortly or email santhosha382007@gmail.com directly.',
+        'Unable to deliver via SMTP right now. Please try again shortly or use direct messaging channels.',
     });
   }
 }

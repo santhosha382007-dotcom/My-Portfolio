@@ -14,9 +14,9 @@ import { SectionHeading } from './SectionHeading';
 
 const CATEGORY_FILTERS: Array<'All' | JourneyCategory> = [
   'All',
-  'Education',
-  'Internship',
   'Hackathon',
+  'Internship',
+  'Education',
 ];
 
 const CATEGORY_ICONS: Record<JourneyCategory, React.ComponentType<{ className?: string }>> = {
@@ -46,9 +46,9 @@ export const Experience: React.FC = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
-            eyebrow="02 // EXPERIENCE & EDUCATION"
+            eyebrow="03 // EXPERIENCE & EDUCATION"
             title="MY JOURNEY."
-            subtitle="Academic foundations, industry internship experience, and hackathon milestones."
+            subtitle="Hackathon milestones, industry internship experience, and academic foundations."
           />
         </div>
 
@@ -123,64 +123,94 @@ export const Experience: React.FC = () => {
                       }`}
                   >
                     <article
-                      className={`gold-card rounded-2xl p-6 ${entry.isPlaceholder
+                      className={`gold-card group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 ${entry.isPlaceholder
                         ? 'border-dashed border-white/14 opacity-90'
-                        : 'border-[#D4AF37]/38'
+                        : 'border-[#D4AF37]/38 hover:border-[#D4AF37]/65'
                         }`}
                     >
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="font-mono-tech inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[11px] font-medium tracking-wider text-[#F2D68A] uppercase">
-                          {entry.category}
-                        </span>
+                      {/* Background Image with 60% opacity level and tuned contrast scrims */}
+                      {entry.backgroundImage && (
+                        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                          <img
+                            src={entry.backgroundImage}
+                            alt=""
+                            aria-hidden="true"
+                            className="h-full w-full object-cover object-center opacity-60 filter contrast-[1.05] brightness-[0.8] transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-75"
+                            loading="lazy"
+                          />
+                          {/* Dark gradient scrims tuned to keep the 60% image vibrant while ensuring high text contrast */}
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-gradient-to-b from-[#080808]/75 via-[#080808]/65 to-[#080808]/85"
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-gradient-to-r from-[#080808]/80 via-transparent to-[#080808]/60"
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.08)_0%,transparent_65%)]"
+                          />
+                        </div>
+                      )}
 
-                        <div className="flex items-center gap-2">
-                          {entry.isPlaceholder && (
-                            <span className="font-mono-tech rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] tracking-wider text-[#A6A6A6] uppercase">
-                              Editable Slot
+                      <div className="relative z-10 flex flex-col justify-between">
+                        <div>
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="font-mono-tech inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[11px] font-medium tracking-wider text-[#F2D68A] uppercase">
+                              {entry.category}
                             </span>
+
+                            <div className="flex items-center gap-2">
+                              {entry.isPlaceholder && (
+                                <span className="font-mono-tech rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] tracking-wider text-[#A6A6A6] uppercase">
+                                  Editable Slot
+                                </span>
+                              )}
+                              <span className="font-mono-tech inline-flex items-center gap-1.5 text-xs text-[#A6A6A6]">
+                                <Calendar className="h-3.5 w-3.5 text-[#E02035]" aria-hidden="true" />
+                                {entry.period}
+                              </span>
+                            </div>
+                          </div>
+
+                          <h3 className="font-display mt-4 text-lg font-bold text-[#F5F2ED] sm:text-xl">
+                            {entry.title}
+                          </h3>
+                          <p className="mt-1 text-sm font-medium text-[#D4AF37]">
+                            {entry.organization}
+                          </p>
+
+                          {entry.score && (
+                            <div className="mt-3">
+                              <span className="font-mono-tech inline-flex items-center rounded-full border border-[#D4AF37]/40 bg-gradient-to-r from-[#A30F20]/30 to-[#D4AF37]/15 px-3 py-1 text-xs font-semibold text-[#F2D68A]">
+                                {entry.score}
+                              </span>
+                            </div>
                           )}
-                          <span className="font-mono-tech inline-flex items-center gap-1.5 text-xs text-[#A6A6A6]">
-                            <Calendar className="h-3.5 w-3.5 text-[#E02035]" aria-hidden="true" />
-                            {entry.period}
-                          </span>
+
+                          <p className="mt-3 text-sm leading-relaxed text-[#A6A6A6]">
+                            {entry.description}
+                          </p>
                         </div>
+
+                        {entry.highlights.length > 0 && (
+                          <ul className="mt-4 space-y-1.5 border-t border-white/8 pt-4">
+                            {entry.highlights.map((item) => (
+                              <li
+                                key={item}
+                                className="flex items-start gap-2.5 text-xs text-[#CFCBC4] sm:text-[13px]"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E02035]"
+                                />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
-
-                      <h3 className="font-display mt-4 text-lg font-bold text-[#F5F2ED] sm:text-xl">
-                        {entry.title}
-                      </h3>
-                      <p className="mt-1 text-sm font-medium text-[#D4AF37]">
-                        {entry.organization}
-                      </p>
-
-                      {entry.score && (
-                        <div className="mt-3">
-                          <span className="font-mono-tech inline-flex items-center rounded-full border border-[#D4AF37]/40 bg-gradient-to-r from-[#A30F20]/30 to-[#D4AF37]/15 px-3 py-1 text-xs font-semibold text-[#F2D68A]">
-                            {entry.score}
-                          </span>
-                        </div>
-                      )}
-
-                      <p className="mt-3 text-sm leading-relaxed text-[#A6A6A6]">
-                        {entry.description}
-                      </p>
-
-                      {entry.highlights.length > 0 && (
-                        <ul className="mt-4 space-y-1.5 border-t border-white/8 pt-4">
-                          {entry.highlights.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-2.5 text-xs text-[#CFCBC4] sm:text-[13px]"
-                            >
-                              <span
-                                aria-hidden="true"
-                                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E02035]"
-                              />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
                     </article>
                   </div>
                 </motion.li>

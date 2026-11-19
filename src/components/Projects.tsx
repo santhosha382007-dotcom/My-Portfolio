@@ -71,7 +71,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onNotice }) => {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
-            eyebrow="04 // FEATURED WORK"
+            eyebrow="05 // FEATURED WORK"
             title="IDEAS TRANSFORMED INTO REALITY."
             subtitle="Original engineering concepts and active development initiatives spanning cybersecurity, AI routing, IoT automation, and web platforms."
           />
