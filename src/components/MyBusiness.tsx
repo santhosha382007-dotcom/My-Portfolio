@@ -58,15 +58,15 @@ export const MyBusiness: React.FC = () => {
             1. ABOUT MY TEAM (Group Image Showcase + Details directly below it)
             ======================================================================= */}
         <div className="mt-12">
-          <div className="mb-3.5 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+          <div className="mb-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div className="flex items-center gap-2.5">
-              <span className="h-[1px] w-6 bg-[#D4AF37]" />
-              <span className="font-mono-tech text-xs font-semibold tracking-widest text-[#D4AF37] uppercase">
+              <span className="h-[1px] w-6 bg-[#E02035]" />
+              <span className="font-mono-tech text-xs font-semibold tracking-widest text-[#E02035] uppercase">
                 {BUSINESS_DATA.team.heading}
               </span>
             </div>
-            <p className="text-xs text-[#A6A6A6]">
-              United by technical rigor, passion for innovation &amp; teamwork
+            <p className="max-w-xl text-xs text-[#A6A6A6] sm:text-right">
+              {BUSINESS_DATA.team.introduction}
             </p>
           </div>
 
@@ -76,43 +76,49 @@ export const MyBusiness: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative overflow-hidden rounded-3xl border border-[#D4AF37]/40 shadow-[0_24px_70px_rgba(0,0,0,0.7)]"
+            className="group relative overflow-hidden rounded-3xl border border-[#E02035]/50 shadow-[0_24px_70px_rgba(0,0,0,0.8),0_0_35px_rgba(224,32,53,0.18)]"
           >
-            <div className="relative aspect-[16/9] max-h-[520px] w-full overflow-hidden bg-[#0A0A0C]">
+            <div className="relative aspect-[16/9] max-h-[520px] w-full overflow-hidden bg-gradient-to-b from-[#120a0d] via-[#0a0809] to-[#040405]">
+              {/* Sleek tech grid & ambient ruby/red glow backdrop */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(224,32,53,0.18)_0%,rgba(139,0,0,0.06)_50%,transparent_80%)]"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff25_1px,transparent_1px)] [background-size:24px_24px]"
+              />
+
+              {/* Cutout Team Image with Glowing Red Outlined Silhouette Border */}
               <img
                 src={BUSINESS_DATA.team.groupImage.src}
                 alt={BUSINESS_DATA.team.groupImage.alt}
-                className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                className="relative z-10 h-full w-full object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.02] drop-shadow-[0_12px_45px_rgba(224,32,53,0.35)]"
                 loading="lazy"
               />
 
-              {/* Ambient Scrims */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/30 to-transparent"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-r from-[#080808]/65 via-transparent to-[#080808]/40"
-              />
+              {/* Top Left Title: "MY PILLARS" (Font size 48 and White) */}
+              <div className="absolute top-4 sm:top-6 left-4 sm:left-7 z-20 flex items-center">
+                <span className="font-display text-2xl sm:text-[48px] font-black tracking-wider text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] uppercase">
+                  MY PILLARS
+                </span>
+              </div>
 
               {/* Top Right Team Badge */}
-              <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/50 bg-[#080808]/85 px-3.5 py-1.5 text-xs font-semibold text-[#F2D68A] backdrop-blur-md shadow-lg">
-                <Users className="h-3.5 w-3.5 text-[#D4AF37]" />
+              <div className="absolute top-4 right-4 z-20 inline-flex items-center gap-1.5 rounded-full border border-[#E02035]/50 bg-[#080808]/85 px-3.5 py-1.5 text-xs font-semibold text-[#FF6B6B] backdrop-blur-md shadow-lg">
+                <Users className="h-3.5 w-3.5 text-[#E02035]" />
                 <span>Our Core Team</span>
               </div>
 
-              {/* Caption Overlay */}
-              <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
-                <p className="font-mono-tech text-xs tracking-wider text-[#D4AF37] uppercase">
-                  Featured Snapshot
-                </p>
-                <h4 className="font-display mt-1 text-lg font-bold text-[#F5F2ED] sm:text-2xl">
-                  {BUSINESS_DATA.team.groupImage.caption}
-                </h4>
-                <p className="mt-1 max-w-2xl text-xs text-[#A6A6A6] sm:text-sm">
-                  {BUSINESS_DATA.team.introduction}
-                </p>
+              {/* Bottom Centre: "THE MINDS BEHIND SOLUTION" (Extended Length Banner) */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-center px-4">
+                <div className="flex w-full max-w-4xl items-center justify-center gap-3 sm:gap-6 rounded-full border border-[#E02035]/40 bg-[#080808]/90 px-6 sm:px-10 py-2 sm:py-2.5 shadow-[0_4px_25px_rgba(224,32,53,0.35)] backdrop-blur-md">
+                  <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#E02035] to-[#E02035]" />
+                  <span className="font-mono-tech text-xs sm:text-sm font-bold tracking-[0.35em] sm:tracking-[0.55em] text-[#F5F2ED] uppercase drop-shadow-[0_0_12px_rgba(224,32,53,0.7)] whitespace-nowrap">
+                    THE MINDS BEHIND SOLUTION
+                  </span>
+                  <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#E02035] to-[#E02035]" />
+                </div>
               </div>
             </div>
           </motion.div>

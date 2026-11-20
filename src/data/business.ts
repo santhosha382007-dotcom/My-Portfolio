@@ -1,7 +1,8 @@
-import sampleGroupImg from '../assets/journey/aarvam-award.jpg';
+import teamGroupImg from '../assets/team/team-group.png';
 import santhoshImg from '../assets/team/santhosh.png';
 import maanshiImg from '../assets/team/maanshi.png';
 import kavinKumarImg from '../assets/team/kavin-kumar.png';
+import pavithraImg from '../assets/team/pavithra.png';
 import vijaiAnandhImg from '../assets/team/vijai-anandh.png';
 
 export interface BusinessPillar {
@@ -177,9 +178,9 @@ export const BUSINESS_DATA: BusinessData = {
     introduction:
       'We are a collective of driven problem solvers, software artisans, and security specialists. Our team combines deep technical discipline with innovative thinking to turn complex challenges into competitive advantages.',
     groupImage: {
-      src: sampleGroupImg,
-      alt: 'Core Team members collaborating together on innovative solutions',
-      caption: 'Our Core Engineering & Innovation Team • Hackathon & Ventures Hub',
+      src: teamGroupImg,
+      alt: 'Core Team members — The Minds Behind Our Solutions',
+      caption: 'Our Core Engineering & Leadership Team • The Minds Behind Our Solutions',
     },
     members: [
       {
@@ -216,6 +217,7 @@ export const BUSINESS_DATA: BusinessData = {
         badge: 'Product & UX',
         bio: 'Bridges aesthetic luxury and functional ergonomics, creating cohesive design systems, intuitive UI/UX, and streamlined product operations.',
         expertise: ['UI/UX Design', 'Design Systems', 'Product Strategy'],
+        image: pavithraImg,
       },
       {
         id: 'member-viaji-anandh',
